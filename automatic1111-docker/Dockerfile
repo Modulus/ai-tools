@@ -30,6 +30,6 @@ RUN wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-web
 EXPOSE 7860
 
 USER nobody
-
+RUN alias pip="pip3"
 
 ENTRYPOINT [ "/usr/bin/bash", "./webui.sh" ]
