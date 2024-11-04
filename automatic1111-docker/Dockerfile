@@ -38,7 +38,7 @@
 
 # FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
 
-FROM ubuntu:20.04 
+FROM ubuntu:22.04 
 # FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
 #python
 
@@ -55,6 +55,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	sudo \
 	net-tools \
 	iproute2 \
+    gcc \
+    python3-dev \
 	&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
@@ -67,7 +69,7 @@ RUN mkdir /app
 
 WORKDIR "/stable-diffusion-webui/"
 
-ENV TORCH_COMMAND="pip install torch==2.1.2"
+# ENV TORCH_COMMAND="pip install torch==2.1.2"
 # --skip-torch-cuda-test"
 
 RUN wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
