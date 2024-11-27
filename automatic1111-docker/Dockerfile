@@ -52,6 +52,11 @@ WORKDIR "/app/stable-diffusion-webui/"
 
 VOLUME /app/stable-diffusion-webui/models
 
+RUN (. /etc/lsb-release && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh |  env os=ubuntu dist="${DISTRIB_CODENAME}" bash)
+
+RUN apt-get install git-lfs
+RUN git clone https://huggingface.co/black-forest-labs/FLUX.1-schnell models/FLUX.1-schnell                                                                                                           
+
 
 EXPOSE 7860
 
