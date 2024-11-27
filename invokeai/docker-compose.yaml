@@ -5,8 +5,8 @@ x-invokeai: &invokeai
 
     # Create a .env file in the same directory as this docker-compose.yml file
     # and populate it with environment variables. See .env.sample
-    # env_file:
-    #   - .env
+    #env_file:
+    #  - .env
 
     # variables without a default will automatically inherit from the host environment
     environment:

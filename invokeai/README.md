@@ -21,5 +21,7 @@ docker run --device /dev/kfd --device /dev/dri --publish 9090:9090 ghcr.io/invok
 docker run --volume /some/local/path:/invokeai {...etc...}
 
 
+docker run  --volume ~/invokeai:/invokeai --device /dev/kfd --device /dev/dri --publish 9090:9090 ghcr.io/invoke-ai/invokeai:main-rocm
+
 ### Docker-compose
 docker-compose --profile rocm up -d
