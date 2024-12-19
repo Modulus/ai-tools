@@ -29,6 +29,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	rm -rf /var/lib/apt/lists/*
 
 
+
+
+
 ENV VIRTUAL_ENV="/app/stable-diffusion-webui/venv"
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
@@ -49,6 +52,13 @@ RUN ./webui.sh -f can_run_as_root --exit --precision full --no-half
 
 
 WORKDIR "/app/stable-diffusion-webui/"
+
+# Added by me, needed to install models from huggingface
+#RUN git lfs install && git clone https://huggingface.co/black-forest-labs/FLUX.1-schnell
+# ENV GIT_LFS_SKIP_SMUDGE=1 #Comment this in if you want to skip download of large files
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN git clone https://huggingface.co/black-forest-labs/FLUX.1-schnell models/FLUX.1-schnell
+ 
 
 VOLUME /app/stable-diffusion-webui/models
 
